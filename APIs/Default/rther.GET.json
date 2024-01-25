@@ -1,0 +1,67 @@
+{
+  "Name": "rther",
+  "Description": "Returns the information of all thhth records in JSON object format.",
+  "HttpMethod": "GET",
+  "IsEnabled": true,
+  "OrderIndex": 3,
+  "CrossDomainPolicy": "PortalAliasesOnly",
+  "Input": [
+    {
+      "Name": "RowLimit",
+      "IsDeleted": false,
+      "IsEnabled": true,
+      "OrderIndex": 0,
+      "Parameters": {},
+      "InputTypeStr": "number",
+      "Validations": [
+        {
+          "Data": "{\"Message\":\"RowLimit is required.\"}",
+          "Type": "default-required",
+          "IsDeleted": false,
+          "IsEnabled": false,
+          "OrderIndex": 0,
+          "Metadata": {
+            "PAP_InternalIdentifier": "Api.InputField.RequiredValidator"
+          }
+        }
+      ]
+    }
+  ],
+  "Actions": [
+    {
+      "ActionType": "PlantAnApp.ReadAllEntity.30285ca3-2657-4969-b4a5-194cb78cc404",
+      "OrderIndex": 0,
+      "Parameters": {
+        "OutputToken": "rther",
+        "RowLimit": "[RowLimit]"
+      },
+      "IsDisabled": false,
+      "ExecutionType": "OnExecute",
+      "Metadata": {
+        "PAP_InternalIdentifier": "Api.ReadAllEntityRecords",
+        "EntityIdentifier": "30285ca3-2657-4969-b4a5-194cb78cc404",
+        "IsUidEnabled": "True"
+      }
+    },
+    {
+      "ActionType": "RawResponse",
+      "OrderIndex": 1,
+      "Parameters": {
+        "HttpCode": "200 OK",
+        "Content": "{\"rther\" : [rther:json]}",
+        "Headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      },
+      "IsDisabled": false,
+      "ExecutionType": "OnExecute",
+      "Metadata": {
+        "PAP_InternalIdentifier": "Api.RawResponse"
+      }
+    }
+  ],
+  "OnErrorActions": []
+}
